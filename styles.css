@@ -6,3 +6,45 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+.gpt-actions-pick-action-modal{
+	max-width: 50%;
+	width: 50%;
+
+	max-height: 90%;
+	height: 600px;
+}
+
+.gpt-actions-pick-action-title{
+	font-size: 20px;
+	font-weight: bold;
+	margin: 10px 0 20px 0;
+	padding: 0 10px
+}
+.gpt-actions-pick-action-hr{
+	margin: 10px 0;
+	padding: 0;
+}
+
+.gpt-actions-pick-action-completion{
+	min-height: 300px;
+	height: 330px;
+	overflow-x: auto;
+	
+	white-space: pre-wrap;
+	width: 100%;
+	margin: 10px 0;
+	padding: 10px;
+	resize: none;
+	font-size: 1.2em;
+	
+}
+
+.gpt-actions-pick-action-input{
+	width: 100%;
+	font-size: 1.2em;
+	padding: 10px;
+	resize: none;
+}
+
+.gpt-actions-pick-action-input::placeholder{
+	color: var(--input
