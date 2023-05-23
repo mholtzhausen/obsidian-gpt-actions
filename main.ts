@@ -6,16 +6,22 @@ import {
 } from 'settings/Settings'
 
 import CommandHandler from 'handlers/CommandHandler';
+import { FuzzySuggester } from 'handlers/FuzzySuggestHandler';
 
 export default class GptActionsPlugin extends Plugin {
 	public settings: Settings;
+	public commandHandler: CommandHandler;
+	public fuzzySuggester: FuzzySuggester;
 
 	async onload() {
 		await this.loadSettings();
 
-		new CommandHandler(this).registerCommands();
-		this.addSettingTab(new SettingsTab(this));
+		this.commandHandler = new CommandHandler(this)
+		this.fuzzySuggester = new FuzzySuggester(this)
 
+		this.commandHandler.registerCommands()
+
+		this.addSettingTab(new SettingsTab(this));
 	}
 
 	onunload() {

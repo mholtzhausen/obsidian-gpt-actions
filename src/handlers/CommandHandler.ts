@@ -1,6 +1,5 @@
 import GptActionsPlugin from "../../main";
 import QueryGptModal from "modals/QueryGptModal";
-import SelectGptAction from "modals/SelectGptAction";
 
 export default class CommandHandler {
 
@@ -19,7 +18,7 @@ export default class CommandHandler {
 			id: 'gpt-actions-pick-action',
 			name: 'Pick Action',
 			callback: () => {
-				new SelectGptAction(this.plugin).open();
+				this.plugin.fuzzySuggester.start();
 			}
 		});
 
