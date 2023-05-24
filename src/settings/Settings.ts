@@ -30,8 +30,8 @@ export class SettingsTab extends PluginSettingTab {
 		containerEl.empty();
 		this.addHeader('OpenAi Settings');
 		this.setting_openAiApiKey();
-		this.addTextSetting('Model Name', 'The name of the model to use.', this.plugin.settings.modelName);
-		this.addTextSetting('Model Temperature', 'The temperature to use when generating text.', this.plugin.settings.modelTemperature.toString());
+		this.setting_modelName();
+		this.setting_modelTemperature();
 
 		this.addHeader('Template Settings');
 		this.setting_templateFolder()
@@ -45,11 +45,10 @@ export class SettingsTab extends PluginSettingTab {
 		const setting = new Setting(this.containerEl)
 			.setName('Enter your OpenAi Api Key')
 			.setDesc('This is used to access the OpenAi API.')
-			.addText(text => text
+			.addText(textComponent => textComponent
 				.setPlaceholder('sk-...')
 				.setValue(this.plugin.settings.openAiApiKey)
 				.onChange(async (value) => {
-					console.log('Secret: ' + value);
 					this.plugin.settings.openAiApiKey = value;
 					await this.plugin.saveSettings();
 				}));
@@ -60,7 +59,7 @@ export class SettingsTab extends PluginSettingTab {
 		const _setting = new Setting(this.containerEl)
 			.setName(name)
 			.setDesc(description)
-			.addText(text => text
+			.addText(textComponent => textComponent
 				.setPlaceholder('sk-...')
 				.setValue(setting)
 				.onChange(async (value) => {
@@ -68,6 +67,32 @@ export class SettingsTab extends PluginSettingTab {
 					await this.plugin.saveSettings();
 				}));
 		return _setting;
+	}
+
+	setting_modelName(): void {
+		new Setting(this.containerEl)
+			.setName('Model Name')
+			.setDesc('The name of the model to use.')
+			.addText(textComponent => textComponent
+				.setPlaceholder('model name')
+				.setValue(this.plugin.settings.modelName)
+				.onChange(async (value) => {
+					this.plugin.settings.modelName = value;
+					await this.plugin.saveSettings();
+				}));
+	}
+
+	setting_modelTemperature(): void {
+		new Setting(this.containerEl)
+			.setName('Model Temperature')
+			.setDesc('The temperature to use when generating text.')
+			.addText(textComponent => textComponent
+				.setPlaceholder('0.2')
+				.setValue(this.plugin.settings.modelTemperature.toString())
+				.onChange(async (value) => {
+					this.plugin.settings.modelTemperature = parseFloat(value);
+					await this.plugin.saveSettings();
+				}));
 	}
 
 	setting_templateFolder(): void {

@@ -5,7 +5,6 @@
 	"minAppVersion": "0.15.0",
 	"description": "This plugin adds customized commands for actions on selected text in Obsidian using GPT-3.",
 	"author": "Mark Holtzhausen",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
-	"isDesktopOnly": false
+	"authorUrl": "https://github.com/mholtzhausen",
+	"isDesktopOnly": true
 }

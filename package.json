@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-gpt-actions-plugin",
-	"version": "1.0.0",
+	"version": "0.1.1",
 	"description": "This plugin adds customized commands for actions on selected text in Obsidian using GPT-3.",
 	"main": "main.js",
 	"scripts": {
